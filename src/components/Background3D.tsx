@@ -80,8 +80,17 @@ function Sun() {
           speed={2}
         />
       </Sphere>
+      {/* Sun Glow Aura */}
+      <Sphere args={[2.2, 64, 64]}>
+        <meshStandardMaterial 
+          color="#f97316" 
+          transparent 
+          opacity={0.3} 
+          emissive="#ea580c" 
+          emissiveIntensity={1} 
+        />
+      </Sphere>
       <pointLight intensity={10} distance={100} color="#f97316" />
-      <div className="sun-glow" />
     </group>
   );
 }
