@@ -1,96 +1,85 @@
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Stars, Float, Sphere, MeshDistortMaterial, Trail } from '@react-three/drei';
-import { useRef } from 'react';
+import { Stars, Float, Sphere, OrbitControls, MeshDistortMaterial } from '@react-three/drei';
+import { useRef, useMemo } from 'react';
 import * as THREE from 'three';
 
-function Planet({ 
-  radius, 
-  distance, 
-  speed, 
-  color, 
-  roughness = 0.5, 
-  metalness = 0.5,
-  hasRing = false 
-}: { 
-  radius: number, 
-  distance: number, 
-  speed: number, 
-  color: string,
-  roughness?: number,
-  metalness?: number,
-  hasRing?: boolean
-}) {
-  const planetRef = useRef<THREE.Group>(null);
+function TechNode({ position, size = 0.5, color = "#00f2ff" }: { position: [number, number, number], size?: number, color?: string }) {
   const meshRef = useRef<THREE.Mesh>(null);
-
+  
   useFrame((state) => {
-    const t = state.clock.getElapsedTime() * speed;
-    if (planetRef.current) {
-      planetRef.current.position.x = Math.cos(t) * distance;
-      planetRef.current.position.z = Math.sin(t) * distance;
-    }
     if (meshRef.current) {
       meshRef.current.rotation.y += 0.01;
+      meshRef.current.rotation.x += 0.005;
+      meshRef.current.position.y += Math.sin(state.clock.getElapsedTime() + position[0]) * 0.002;
     }
   });
 
   return (
-    <group ref={planetRef}>
-      <Trail 
-        width={1} 
-        length={10} 
-        color={color} 
-        attenuation={(t) => t * t}
-      >
-        <Sphere ref={meshRef} args={[radius, 32, 32]}>
-          <meshStandardMaterial 
-            color={color} 
-            roughness={roughness} 
-            metalness={metalness} 
-            emissive={color}
-            emissiveIntensity={0.2}
-          />
-        </Sphere>
-      </Trail>
-      
-      {hasRing && (
-        <mesh rotation={[Math.PI / 2.5, 0, 0]}>
-          <ringGeometry args={[radius * 1.4, radius * 2.2, 64]} />
-          <meshStandardMaterial 
-            color={color} 
-            transparent 
-            opacity={0.4} 
-            side={THREE.DoubleSide} 
-          />
-        </mesh>
-      )}
+    <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5} position={position}>
+      <Sphere ref={meshRef} args={[size, 16, 16]}>
+        <meshStandardMaterial 
+          color={color} 
+          wireframe
+          transparent 
+          opacity={0.6}
+          emissive={color}
+          emissiveIntensity={1}
+        />
+      </Sphere>
+      <pointLight intensity={2} distance={5} color={color} />
+    </Float>
+  );
+}
+
+function DataConnection({ nodeA, nodeB, color = "#4f46e5" }: { nodeA: [number, number, number], nodeB: [number, number, number], color?: string }) {
+  const points = useMemo(() => [new THREE.Vector3(...nodeA), new THREE.Vector3(...nodeB)], [nodeA, nodeB]);
+  const lineGeometry = useMemo(() => new THREE.BufferGeometry().setFromPoints(points), [points]);
+
+  return (
+    <line geometry={lineGeometry}>
+      <lineBasicMaterial color={color} transparent opacity={0.2} linewidth={1} />
+    </line>
+  );
+}
+
+function DigitalRain() {
+  const count = 40;
+  const positions = useMemo(() => {
+    return Array.from({ length: count }).map(() => ([
+      (Math.random() - 0.5) * 40,
+      Math.random() * 20 - 10,
+      (Math.random() - 0.5) * 20
+    ] as [number, number, number]));
+  }, []);
+
+  return (
+    <group>
+      {positions.map((pos, i) => (
+        <TechNode key={i} position={pos} size={Math.random() * 0.3 + 0.1} color={i % 3 === 0 ? "#22d3ee" : "#6366f1"} />
+      ))}
     </group>
   );
 }
 
-function Sun() {
+function TechCore() {
   return (
-    <group>
-      <Sphere args={[2, 64, 64]}>
+    <group position={[0, 0, 0]}>
+      <Sphere args={[2.5, 64, 64]}>
         <MeshDistortMaterial
-          color="#facc15"
-          emissive="#ea580c"
-          emissiveIntensity={2}
+          color="#0ea5e9"
+          emissive="#312e81"
+          emissiveIntensity={0.5}
           distort={0.4}
-          speed={2}
+          speed={4}
+          roughness={0.2}
+          metalness={0.8}
         />
       </Sphere>
-      {/* Sun Glow Aura */}
-      <Sphere args={[2.2, 64, 64]}>
-        <meshStandardMaterial 
-          color="#f97316" 
-          transparent 
-          opacity={0.3} 
-          emissive="#ea580c" 
-          emissiveIntensity={1} 
-        />
+      {/* Outer shell */}
+      <Sphere args={[3, 32, 32]}>
+        <meshStandardMaterial color="#0ea5e9" wireframe transparent opacity={0.1} />
       </Sphere>
-      <pointLight intensity={10} distance={100} color="#f97316" />
+      <pointLight intensity={10} distance={50} color="#00f2ff" />
     </group>
   );
 }
@@ -98,44 +87,35 @@ function Sun() {
 export default function Background3D() {
   return (
     <div className="fixed inset-0 z-0 bg-[#020617] pointer-events-none">
-      <Canvas camera={{ position: [0, 15, 25], fov: 45 }}>
-        <ambientLight intensity={0.2} />
-        <Stars radius={150} depth={50} count={5000} factor={4} saturation={1} fade speed={1} />
+      <Canvas camera={{ position: [0, 5, 20], fov: 45 }}>
+        <fog attach="fog" args={["#020617", 10, 50]} />
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[10, 10, 5]} intensity={1} color="#4f46e5" />
         
-        <Float speed={1} rotationIntensity={0.2} floatIntensity={0.5}>
-          <group rotation={[-Math.PI / 8, 0, 0]}>
-            <Sun />
-            
-            {/* Mercury */}
-            <Planet radius={0.3} distance={4} speed={0.8} color="#94a3b8" />
-            
-            {/* Venus */}
-            <Planet radius={0.5} distance={6} speed={0.6} color="#fbbf24" />
-            
-            {/* Earth */}
-            <Planet radius={0.6} distance={8} speed={0.4} color="#3b82f6" />
-            
-            {/* Mars */}
-            <Planet radius={0.4} distance={10} speed={0.3} color="#ef4444" />
-            
-            {/* Jupiter */}
-            <Planet radius={1.2} distance={14} speed={0.2} color="#d97706" />
-            
-            {/* Saturn */}
-            <Planet radius={1.0} distance={18} speed={0.15} color="#eab308" hasRing={true} />
-            
-            {/* Uranus */}
-            <Planet radius={0.7} distance={22} speed={0.1} color="#60a5fa" />
-            
-            {/* Neptune */}
-            <Planet radius={0.7} distance={25} speed={0.08} color="#4f46e5" />
-          </group>
-        </Float>
+        <Stars radius={100} depth={50} count={3000} factor={4} saturation={1} fade speed={1} />
+        
+        <group rotation={[Math.PI / 10, 0, 0]}>
+          <TechCore />
+          <DigitalRain />
+        </group>
+
+        {/* Dynamic slow rotation of the whole setup */}
+        <SceneController />
       </Canvas>
       
-      {/* Visual Overlay for Depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#020617]/80" />
+      {/* Visual Overlay for Screen Space Effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#020617_100%)] opacity-60" />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 pointer-events-none" />
     </div>
   );
 }
+
+function SceneController() {
+  useFrame((state) => {
+    state.camera.position.x = Math.sin(state.clock.getElapsedTime() * 0.1) * 2;
+    state.camera.lookAt(0, 0, 0);
+  });
+  return null;
+}
+
 
