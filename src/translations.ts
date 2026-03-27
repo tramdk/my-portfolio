@@ -35,11 +35,11 @@ export const translations = {
       "Nâng cao hiệu suất UI/UX."
     ],
     eduTitle: "Học vấn",
-    uniName: "Đại học Bách Khoa TP.HCM",
+    uniName: "Đại học Công nghệ TP.HCM",
     majorLabel: "Chuyên ngành:",
     majorName: "Công nghệ thông tin",
     degreeLabel: "Bằng cấp:",
-    degreeName: "Cử nhân Kỹ thuật",
+    degreeName: "Cử nhân Công nghệ thông tin",
     intTitle: "Sở thích",
     int1: "Liên tục học hỏi công nghệ mới",
     int2: "Nghe nhạc",
