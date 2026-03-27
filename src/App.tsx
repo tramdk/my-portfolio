@@ -49,10 +49,10 @@ export default function App() {
   return (
     <div className="relative min-h-screen text-slate-300 font-sans selection:bg-blue-500/30">
       <Background3D />
-      
+
       {/* Language Switcher */}
       <div className="fixed top-6 right-6 z-50">
-        <button 
+        <button
           onClick={() => setLang(lang === 'vi' ? 'en' : 'vi')}
           className="flex items-center gap-2 bg-slate-800/80 backdrop-blur-md border border-slate-600 hover:bg-slate-700/80 text-white px-4 py-2 rounded-full shadow-lg transition-all"
         >
@@ -62,9 +62,9 @@ export default function App() {
       </div>
 
       <main className="relative z-10 max-w-5xl mx-auto px-6 py-20">
-        
+
         {/* Hero Section */}
-        <motion.header 
+        <motion.header
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
@@ -75,11 +75,11 @@ export default function App() {
               Đặng Ngọc Trầm
             </h1>
             <p className="text-2xl text-slate-400 font-medium mb-6">{t.role}</p>
-            
+
             <p className="text-lg leading-relaxed text-slate-300 max-w-2xl mb-8">
               {t.summary}
             </p>
-            
+
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-sm font-medium">
               <a href="mailto:tramdk1997@gmail.com" className="flex items-center gap-2 bg-slate-800/50 hover:bg-slate-700/50 px-4 py-2 rounded-full border border-slate-700 transition-colors">
                 <Mail className="w-4 h-4 text-blue-400" />
@@ -113,7 +113,7 @@ export default function App() {
                 <SkillBadge name="Angular" icon={SiAngular} colorClass="text-red-500" />
               </div>
             </GlassCard>
-            
+
             <GlassCard>
               <div className="flex items-center gap-3 mb-4">
                 <Server className="w-6 h-6 text-blue-400" />
@@ -126,7 +126,7 @@ export default function App() {
                 <SkillBadge name="Entity Framework" icon={Database} colorClass="text-slate-400" />
               </div>
             </GlassCard>
-            
+
             <GlassCard>
               <div className="flex items-center gap-3 mb-4">
                 <Database className="w-6 h-6 text-green-400" />
@@ -135,11 +135,11 @@ export default function App() {
               <div className="flex flex-wrap gap-2">
                 <SkillBadge name="SQL Server" icon={DiMsqlServer} colorClass="text-red-500" />
                 <SkillBadge name="PostgreSQL" icon={SiPostgresql} colorClass="text-blue-400" />
-               
+
                 <SkillBadge name="MongoDB" icon={SiMongodb} colorClass="text-green-500" />
               </div>
             </GlassCard>
-            
+
             <GlassCard>
               <div className="flex items-center gap-3 mb-4">
                 <Code2 className="w-6 h-6 text-purple-400" />
@@ -188,7 +188,7 @@ export default function App() {
                 </span>
               </div>
               <p className="text-lg text-indigo-300 font-medium mb-6">Software Developer</p>
-              
+
               <ul className="space-y-4 text-slate-300">
                 <li className="flex items-start gap-3">
                   <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
@@ -220,7 +220,7 @@ export default function App() {
                 <span className="text-slate-400 font-medium mt-2 md:mt-0">2022 - 2025</span>
               </div>
               <p className="text-lg text-indigo-300 font-medium mb-4">Fullstack Developer <span className="text-slate-500 mx-2">|</span> Team size: 20</p>
-              
+
               <div className="mb-4">
                 <strong className="text-white block mb-2">{t.respLabel}</strong>
                 <ul className="list-disc list-inside text-slate-300 space-y-1 ml-2">
@@ -229,7 +229,7 @@ export default function App() {
                   ))}
                 </ul>
               </div>
-              
+
               <div>
                 <strong className="text-white block mb-3">{t.techLabel}</strong>
                 <div className="flex flex-wrap gap-2">
@@ -254,7 +254,7 @@ export default function App() {
                 <span className="text-slate-400 font-medium mt-2 md:mt-0">2020 - 2022</span>
               </div>
               <p className="text-lg text-indigo-300 font-medium mb-4">Fullstack Developer <span className="text-slate-500 mx-2">|</span> Team size: 5</p>
-              
+
               <div className="mb-4">
                 <strong className="text-white block mb-2">{t.respLabel}</strong>
                 <ul className="list-disc list-inside text-slate-300 space-y-1 ml-2">
@@ -263,7 +263,7 @@ export default function App() {
                   ))}
                 </ul>
               </div>
-              
+
               <div>
                 <strong className="text-white block mb-3">{t.techLabel}</strong>
                 <div className="flex flex-wrap gap-2">
@@ -316,7 +316,7 @@ export default function App() {
             </GlassCard>
           </Section>
         </div>
-        
+
         <footer className="mt-20 pt-8 border-t border-slate-800 text-center text-slate-500 text-sm">
           <p>© {new Date().getFullYear()} Đặng Ngọc Trầm. All rights reserved.</p>
         </footer>

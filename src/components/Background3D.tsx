@@ -30,7 +30,7 @@ function DragonBall({ position, scale = 1, starCount = 1 }: { position: [number,
             const radius = starCount === 1 ? 0 : 0.4;
             let posX = Math.cos(angle) * radius;
             let posY = Math.sin(angle) * radius;
-            
+
             // Special arrangement for 7 stars
             if (starCount === 7) {
               if (i === 0) { posX = 0; posY = 0; }
@@ -40,7 +40,7 @@ function DragonBall({ position, scale = 1, starCount = 1 }: { position: [number,
                 posY = Math.sin(a) * 0.5;
               }
             }
-            
+
             return (
               <Sphere key={i} args={[0.15, 16, 16]} position={[posX, posY, 0.2]}>
                 <meshStandardMaterial color="#dc2626" emissive="#dc2626" emissiveIntensity={0.5} />
@@ -91,19 +91,19 @@ function GokuNimbus({ position }: { position: [number, number, number] }) {
             <cylinderGeometry args={[0.12, 0.1, 0.5, 16]} />
             <meshStandardMaterial color="#ea580c" />
           </mesh>
-          
+
           {/* Body (Orange Gi) */}
           <mesh position={[0, 0, 0]}>
             <cylinderGeometry args={[0.25, 0.3, 0.6, 16]} />
             <meshStandardMaterial color="#ea580c" />
           </mesh>
-          
+
           {/* Belt (Blue) */}
           <mesh position={[0, -0.25, 0]}>
             <cylinderGeometry args={[0.31, 0.31, 0.1, 16]} />
             <meshStandardMaterial color="#1d4ed8" />
           </mesh>
-          
+
           {/* Arms */}
           <mesh position={[-0.35, 0.1, 0]} rotation={[0, 0, 0.5]}>
             <cylinderGeometry args={[0.08, 0.08, 0.5, 16]} />
@@ -118,7 +118,7 @@ function GokuNimbus({ position }: { position: [number, number, number] }) {
           <Sphere args={[0.25, 32, 32]} position={[0, 0.45, 0]}>
             <meshStandardMaterial color="#ffedd5" />
           </Sphere>
-          
+
           {/* Hair (Black Spikes) */}
           <group position={[0, 0.55, 0]}>
             <mesh position={[-0.2, 0.1, 0]} rotation={[0, 0, 0.6]}>
