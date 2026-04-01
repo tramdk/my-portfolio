@@ -26,7 +26,7 @@ export default function Background3D() {
 
         <Float speed={1} rotationIntensity={1} floatIntensity={2} position={[2, -3, -3]}>
           <Sphere args={[0.8, 32, 32]}>
-            <meshStandardMaterial color="#ec4899" wireframe opacity={0.15} transparent />
+            <meshStandardMaterial color="#ed8728ff" wireframe opacity={0.15} transparent />
           </Sphere>
         </Float>
       </Canvas>

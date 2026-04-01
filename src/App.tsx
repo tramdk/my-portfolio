@@ -1,7 +1,7 @@
 import Background3D from './components/Background3D';
 import { motion } from 'motion/react';
 import { Mail, MapPin, Phone, Code2, Database, Layout, Server, Cpu, Briefcase, GraduationCap, User, Gamepad2, Music, Globe, Wifi, Network, Layers, Building2 } from 'lucide-react';
-import { SiHtml5, SiCss, SiJavascript, SiTypescript, SiAngular, SiDotnet, SiPostgresql, SiMongodb, SiRedis, SiElasticsearch } from 'react-icons/si';
+import { SiHtml5, SiCss, SiJavascript, SiTypescript, SiAngular, SiDotnet, SiPostgresql, SiMongodb, SiRedis, SiElasticsearch, SiDocker, SiKubernetes, SiJenkins } from 'react-icons/si';
 import { TbBrandCSharp } from 'react-icons/tb';
 import { DiMsqlServer } from 'react-icons/di';
 import { ReactNode, useState } from 'react';
@@ -257,6 +257,9 @@ export default function App() {
                   <SkillBadge name="Microservice" icon={Network} colorClass="text-indigo-400" />
                   <SkillBadge name="Redis Cache" icon={SiRedis} colorClass="text-red-600" />
                   <SkillBadge name="ElasticSearch" icon={SiElasticsearch} colorClass="text-yellow-500" />
+                  <SkillBadge name="Docker" icon={SiDocker} colorClass="text-blue-500" />
+                  <SkillBadge name="Kubernetes (K8s)" icon={SiKubernetes} colorClass="text-blue-600" />
+                  <SkillBadge name="Jenkins" icon={SiJenkins} colorClass="text-red-500" />
                 </div>
               </div>
             </GlassCard>
