@@ -72,7 +72,7 @@ export default function App() {
         >
           <div className="flex-1">
             <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 mb-4 pb-2 tracking-tight leading-tight">
-              Đặng Ngọc Trầm
+              {t.name}
             </h1>
             <p className="text-2xl text-slate-400 font-medium mb-6">{t.role}</p>
 
@@ -81,14 +81,14 @@ export default function App() {
             </p>
 
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-sm font-medium">
-              <a href="mailto:tramdk1997@gmail.com" className="flex items-center gap-2 bg-slate-800/50 hover:bg-slate-700/50 px-4 py-2 rounded-full border border-slate-700 transition-colors">
+              <a href={`mailto:${t.email}`} className="flex items-center gap-2 bg-slate-800/50 hover:bg-slate-700/50 px-4 py-2 rounded-full border border-slate-700 transition-colors">
                 <Mail className="w-4 h-4 text-blue-400" />
-                tramdk1997@gmail.com
+                {t.email}
               </a>
-              <span className="flex items-center gap-2 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700">
+              <a href={`tel:${t.phone.replace(/\s+/g, '')}`} className="flex items-center gap-2 bg-slate-800/50 hover:bg-slate-700/50 px-4 py-2 rounded-full border border-slate-700 transition-colors">
                 <Phone className="w-4 h-4 text-green-400" />
-                +84 396 467 697
-              </span>
+                {t.phone}
+              </a>
               <span className="flex items-center gap-2 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700">
                 <MapPin className="w-4 h-4 text-red-400" />
                 {t.location}
@@ -105,6 +105,7 @@ export default function App() {
                 <Layout className="w-6 h-6 text-pink-400" />
                 <h3 className="text-xl font-semibold text-white">Front-end</h3>
               </div>
+              <p className="text-sm text-slate-300 mb-4">{t.skills.frontend}</p>
               <div className="flex flex-wrap gap-2">
                 <SkillBadge name="HTML5" icon={SiHtml5} colorClass="text-orange-500" />
                 <SkillBadge name="CSS3" icon={SiCss} colorClass="text-blue-500" />
@@ -119,6 +120,7 @@ export default function App() {
                 <Server className="w-6 h-6 text-blue-400" />
                 <h3 className="text-xl font-semibold text-white">Back-end</h3>
               </div>
+              <p className="text-sm text-slate-300 mb-4">{t.skills.backend}</p>
               <div className="flex flex-wrap gap-2">
                 <SkillBadge name="C#" icon={TbBrandCSharp} colorClass="text-purple-500" />
                 <SkillBadge name=".NET Core" icon={SiDotnet} colorClass="text-purple-600" />
@@ -132,38 +134,49 @@ export default function App() {
                 <Database className="w-6 h-6 text-green-400" />
                 <h3 className="text-xl font-semibold text-white">Database</h3>
               </div>
+              <p className="text-sm text-slate-300 mb-4">{t.skills.database}</p>
               <div className="flex flex-wrap gap-2">
                 <SkillBadge name="SQL Server" icon={DiMsqlServer} colorClass="text-red-500" />
                 <SkillBadge name="PostgreSQL" icon={SiPostgresql} colorClass="text-blue-400" />
-
                 <SkillBadge name="MongoDB" icon={SiMongodb} colorClass="text-green-500" />
               </div>
             </GlassCard>
 
             <GlassCard>
-              <div className="flex items-center gap-3 mb-4">
-                <Code2 className="w-6 h-6 text-purple-400" />
-                <h3 className="text-xl font-semibold text-white">{t.archTitle}</h3>
-              </div>
-              <div className="space-y-4">
+              <div className="flex flex-col gap-6">
                 <div>
-                  <strong className="text-slate-300 block mb-3 text-sm">{t.archLabel}</strong>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Layers className="w-6 h-6 text-purple-400" />
+                    <h3 className="text-xl font-semibold text-white">{t.archTitle}</h3>
+                  </div>
+                  <p className="text-sm text-slate-300 mb-4">{t.skills.architecture}</p>
                   <div className="flex flex-wrap gap-2">
                     <SkillBadge name="MVC" icon={Layout} colorClass="text-blue-400" />
                     <SkillBadge name="N-Layer" icon={Layers} colorClass="text-purple-400" />
-                    <SkillBadge name="Repository pattern" icon={Database} colorClass="text-green-400" />
+                    <SkillBadge name="Repository" icon={Database} colorClass="text-green-400" />
                     <SkillBadge name="Microservice" icon={Network} colorClass="text-indigo-400" />
                     <SkillBadge name="SOLID" icon={Code2} colorClass="text-yellow-400" />
                   </div>
                 </div>
+
                 <div>
-                  <strong className="text-slate-300 block mb-3 text-sm">{t.optLabel}</strong>
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    <SkillBadge name="Redis Cache" icon={SiRedis} colorClass="text-red-600" />
-                    <SkillBadge name="ElasticSearch" icon={SiElasticsearch} colorClass="text-yellow-500" />
+                  <div className="flex items-center gap-3 mb-4">
+                    <Cpu className="w-6 h-6 text-indigo-400" />
+                    <h3 className="text-xl font-semibold text-white">{t.aiTitle}</h3>
                   </div>
-                  <p className="text-sm text-slate-400 bg-slate-800/30 border border-slate-700/30 p-3 rounded-lg">
-                    {t.optText}
+                  <p className="text-sm text-slate-300 bg-slate-800/30 border border-slate-700/30 p-3 rounded-lg flex items-center gap-3">
+                    <span className="w-2 h-2 rounded-full bg-indigo-400"></span>
+                    {t.skills.ai}
+                  </p>
+                </div>
+
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Code2 className="w-6 h-6 text-yellow-400" />
+                    <h3 className="text-xl font-semibold text-white">Performance Optimization</h3>
+                  </div>
+                  <p className="text-sm text-slate-300 bg-slate-800/30 border border-slate-700/30 p-3 rounded-lg italic">
+                    {t.skills.optimization}
                   </p>
                 </div>
               </div>
@@ -184,7 +197,7 @@ export default function App() {
                   <h3 className="text-2xl font-bold text-white">Lac Viet Computing Group</h3>
                 </div>
                 <span className="inline-block bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-sm font-semibold mt-2 md:mt-0">
-                  2020 - 2025
+                  2020 - {t.current}
                 </span>
               </div>
               <p className="text-lg text-indigo-300 font-medium mb-6">Software Developer</p>
@@ -217,9 +230,9 @@ export default function App() {
             <GlassCard>
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                 <h3 className="text-2xl font-bold text-white">ERP System</h3>
-                <span className="text-slate-400 font-medium mt-2 md:mt-0">2022 - 2025</span>
+                <span className="text-slate-400 font-medium mt-2 md:mt-0">2022 - {t.current}</span>
               </div>
-              <p className="text-lg text-indigo-300 font-medium mb-4">Fullstack Developer <span className="text-slate-500 mx-2">|</span> Team size: 20</p>
+              <p className="text-lg text-indigo-300 font-medium mb-4">Fullstack Developer <span className="text-slate-500 mx-2">|</span> {t.teamSizeLabel} 20</p>
 
               <div className="mb-4">
                 <strong className="text-white block mb-2">{t.respLabel}</strong>
@@ -253,7 +266,7 @@ export default function App() {
                 <h3 className="text-2xl font-bold text-white">Document Management System</h3>
                 <span className="text-slate-400 font-medium mt-2 md:mt-0">2020 - 2022</span>
               </div>
-              <p className="text-lg text-indigo-300 font-medium mb-4">Fullstack Developer <span className="text-slate-500 mx-2">|</span> Team size: 5</p>
+              <p className="text-lg text-indigo-300 font-medium mb-4">Fullstack Developer <span className="text-slate-500 mx-2">|</span> {t.teamSizeLabel} 5</p>
 
               <div className="mb-4">
                 <strong className="text-white block mb-2">{t.respLabel}</strong>
@@ -318,7 +331,7 @@ export default function App() {
         </div>
 
         <footer className="mt-20 pt-8 border-t border-slate-800 text-center text-slate-500 text-sm">
-          <p>© {new Date().getFullYear()} Đặng Ngọc Trầm. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {t.name}. All rights reserved.</p>
         </footer>
       </main>
     </div>
