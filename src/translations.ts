@@ -55,6 +55,33 @@ export const translations = {
     int1: "Liên tục học hỏi công nghệ mới.",
     int2: "Nghe nhạc.",
     int3: "Chơi video games.",
+    sideProjTitle: "Side Projects",
+    sideProjects: [
+      {
+        name: "AI Fanpage Manager",
+        desc: "Hệ thống quản lý & tự động hóa nội dung Facebook Fanpage bằng AI (Gemini). Hỗ trợ lập lịch bài đăng, sinh nội dung thông minh và Studio thiết kế bài viết.",
+        tech: ["React 19", "TypeScript", "Node.js", "Prisma", "Gemini AI", "Tailwind 4"],
+        github: "https://github.com/tramdk/ai-fanpage-manager"
+      },
+      {
+        name: "Tiệm hoa của ChinChin",
+        desc: "Website thương mại điện tử cao cấp dành cho tiệm hoa với trải nghiệm 3D sống động (Three.js), giao diện Glassmorphism sang trọng và hiện đại.",
+        tech: ["React", "Three.js", "Framer Motion", "Tailwind CSS"],
+        github: "https://github.com/tramdk/c-i-ti-m-hoa-c-a-chin"
+      },
+      {
+        name: "Blog API",
+        desc: "Hệ thống Backend REST API chuẩn công nghiệp áp dụng Clean Architecture, DDD và CQRS. Tích hợp Cloudinary, SignalR và tối ưu hóa hiệu suất với Dapper.",
+        tech: [".NET 8", "EF Core", "Dapper", "SQL Server", "Redis Cache"],
+        github: "https://github.com/tramdk/BlogApi"
+      },
+      {
+        name: "WoL (Wake on LAN)",
+        desc: "Công cụ tiện ích cho phép bật máy tính từ xa qua mạng, tích hợp giao diện web đơn giản và khả năng mở rộng với AI hỗ trợ điều khiển.",
+        tech: ["TypeScript", "Node.js", "Vite", "Gemini API"],
+        github: "https://github.com/tramdk/WoL"
+      }
+    ]
   },
   en: {
     name: "Tram, Dang Ngoc",
@@ -112,5 +139,32 @@ export const translations = {
     int1: "Continuously learning new technologies.",
     int2: "Listening to music.",
     int3: "Playing video games.",
+    sideProjTitle: "Side Projects",
+    sideProjects: [
+      {
+        name: "AI Fanpage Manager",
+        desc: "AI-powered content management & automation system for Facebook Fanpages. Supports smart scheduling, AI content generation (Gemini), and a Creative Studio.",
+        tech: ["React 19", "TypeScript", "Node.js", "Prisma", "Gemini AI", "Tailwind 4"],
+        github: "https://github.com/tramdk/ai-fanpage-manager"
+      },
+      {
+        name: "ChinChin Floral Shop",
+        desc: "High-end E-commerce website for a floral shop with immersive 3D experiences (Three.js) and a luxury Glassmorphism UI.",
+        tech: ["React", "Three.js", "Framer Motion", "Tailwind CSS"],
+        github: "https://github.com/tramdk/c-i-ti-m-hoa-c-a-chin"
+      },
+      {
+        name: "Blog API",
+        desc: "Industry-standard Backend REST API implementing Clean Architecture, DDD, and CQRS. Integrated with Cloudinary, SignalR, and Dapper optimization.",
+        tech: [".NET 8", "EF Core", "Dapper", "SQL Server", "Redis Cache"],
+        github: "https://github.com/tramdk/BlogApi"
+      },
+      {
+        name: "WoL (Wake on LAN)",
+        desc: "Utility tool for remote power management over networking, featuring a simple web UI and potential for AI-driven control extensions.",
+        tech: ["TypeScript", "Node.js", "Vite", "Gemini API"],
+        github: "https://github.com/tramdk/WoL"
+      }
+    ]
   }
 };

@@ -1,6 +1,8 @@
 import Background3D from './components/Background3D';
+import ProfileFrame3D from './components/ProfileFrame3D';
+import profileImg from './assets/profile.png';
 import { motion } from 'motion/react';
-import { Mail, MapPin, Phone, Code2, Database, Layout, Server, Cpu, Briefcase, GraduationCap, User, Gamepad2, Music, Globe, Wifi, Network, Layers, Building2 } from 'lucide-react';
+import { Mail, MapPin, Phone, Code2, Database, Layout, Server, Cpu, Briefcase, GraduationCap, User, Gamepad2, Music, Globe, Wifi, Network, Layers, Building2, Github } from 'lucide-react';
 import { SiHtml5, SiCss, SiJavascript, SiTypescript, SiAngular, SiDotnet, SiPostgresql, SiMongodb, SiRedis, SiElasticsearch, SiDocker, SiKubernetes, SiJenkins } from 'react-icons/si';
 import { TbBrandCSharp } from 'react-icons/tb';
 import { DiMsqlServer } from 'react-icons/di';
@@ -42,9 +44,32 @@ function SkillBadge({ name, icon: Icon, colorClass }: { name: string, icon: any,
   );
 }
 
+function SideProjectCard({ project }: { project: any }) {
+  return (
+    <GlassCard className="group hover:border-blue-500/50 transition-all duration-300 flex flex-col h-full">
+      <div className="flex justify-between items-start mb-4">
+        <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">{project.name}</h3>
+        <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors p-1">
+          <Github className="w-5 h-5" />
+        </a>
+      </div>
+      <p className="text-sm text-slate-300 mb-6 leading-relaxed flex-grow">
+        {project.desc}
+      </p>
+      <div className="flex flex-wrap gap-2 mt-auto">
+        {project.tech.map((t: string) => (
+          <span key={t} className="text-[10px] font-bold uppercase tracking-wider bg-blue-500/10 text-blue-300 border border-blue-500/20 px-2 py-0.5 rounded">
+            {t}
+          </span>
+        ))}
+      </div>
+    </GlassCard>
+  );
+}
+
 export default function App() {
   const [lang, setLang] = useState<'vi' | 'en'>('en');
-  const t = translations[lang];
+  const t = translations[lang] as any;
 
   return (
     <div className="relative min-h-screen text-slate-300 font-sans selection:bg-blue-500/30">
@@ -68,8 +93,19 @@ export default function App() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="mb-32 text-center md:text-left flex flex-col md:flex-row items-center md:items-start gap-8"
+          className="mb-32 text-center md:text-left flex flex-col md:flex-row items-center gap-16"
         >
+          <div className="relative shrink-0 flex items-center justify-center">
+            <ProfileFrame3D />
+            <div className="relative z-10">
+              <img 
+                src={profileImg} 
+                alt={t.name}
+                className="w-48 h-48 md:w-60 md:h-60 rounded-[2.5rem] object-cover border border-white/10 shadow-2xl relative"
+              />
+            </div>
+          </div>
+
           <div className="flex-1">
             <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 mb-4 pb-2 tracking-tight leading-tight">
               {t.name}
@@ -292,6 +328,15 @@ export default function App() {
                 </div>
               </div>
             </GlassCard>
+          </div>
+        </Section>
+
+        {/* Side Projects Section */}
+        <Section title={t.sideProjTitle} icon={Layout}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {t.sideProjects.map((project: any, idx: number) => (
+              <SideProjectCard key={idx} project={project} />
+            ))}
           </div>
         </Section>
 
