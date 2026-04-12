@@ -48,7 +48,11 @@ function SideProjectCard({ project }: { project: any }) {
   return (
     <GlassCard className="group hover:border-blue-500/50 transition-all duration-300 flex flex-col h-full">
       <div className="flex justify-between items-start mb-4">
-        <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">{project.name}</h3>
+        <a href={project.github} target="_blank" rel="noopener noreferrer" className="group/link">
+          <h3 className="text-xl font-bold text-white group-hover/link:text-blue-400 transition-colors">
+            {project.name}
+          </h3>
+        </a>
         <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors p-1">
           <Github className="w-5 h-5" />
         </a>
