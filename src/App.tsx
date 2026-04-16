@@ -6,7 +6,7 @@ import { Mail, MapPin, Phone, Code2, Database, Layout, Server, Cpu, Briefcase, G
 import { SiHtml5, SiCss, SiJavascript, SiTypescript, SiAngular, SiDotnet, SiPostgresql, SiMongodb, SiRedis, SiElasticsearch, SiDocker, SiKubernetes, SiJenkins } from 'react-icons/si';
 import { TbBrandCSharp } from 'react-icons/tb';
 import { DiMsqlServer } from 'react-icons/di';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useState, useRef, MouseEvent } from 'react';
 import { translations } from './translations';
 
 function Section({ children, title, icon: Icon }: { children: ReactNode, title: string, icon?: any }) {
@@ -30,6 +30,37 @@ function Section({ children, title, icon: Icon }: { children: ReactNode, title: 
 function GlassCard({ children, className = "" }: { children: ReactNode, className?: string }) {
   return (
     <div className={`bg-slate-900/40 backdrop-blur-md border border-slate-700/50 rounded-2xl p-6 shadow-xl ${className}`}>
+      {children}
+    </div>
+  );
+}
+
+function Tilt3DWrapper({ children }: { children: ReactNode }) {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    const el = wrapperRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;   // -0.5 to 0.5
+    const y = (e.clientY - rect.top) / rect.height - 0.5;    // -0.5 to 0.5
+    el.style.transform = `perspective(800px) rotateY(${x * 16}deg) rotateX(${-y * 16}deg) scale3d(1.04, 1.04, 1.04)`;
+  };
+
+  const handleMouseLeave = () => {
+    const el = wrapperRef.current;
+    if (!el) return;
+    el.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)';
+  };
+
+  return (
+    <div
+      ref={wrapperRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="relative shrink-0 flex items-center justify-center"
+      style={{ transition: 'transform 0.15s ease-out', transformStyle: 'preserve-3d', cursor: 'none' }}
+    >
       {children}
     </div>
   );
@@ -99,16 +130,24 @@ export default function App() {
           transition={{ duration: 0.8 }}
           className="mb-32 text-center md:text-left flex flex-col md:flex-row items-center gap-16"
         >
-          <div className="relative shrink-0 flex items-center justify-center">
+          <Tilt3DWrapper>
             <ProfileFrame3D />
             <div className="relative z-10">
               <img 
                 src={profileImg} 
                 alt={t.name}
                 className="w-48 h-48 md:w-60 md:h-60 rounded-[2.5rem] object-cover border border-white/10 shadow-2xl relative"
+                style={{ filter: 'drop-shadow(0 0 24px rgba(96,165,250,0.3))' }}
+              />
+              {/* Holographic glare overlay */}
+              <div
+                className="absolute inset-0 rounded-[2.5rem] pointer-events-none"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 50%, rgba(96,165,250,0.06) 100%)',
+                }}
               />
             </div>
-          </div>
+          </Tilt3DWrapper>
 
           <div className="flex-1">
             <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 mb-4 pb-2 tracking-tight leading-tight">
