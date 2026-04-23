@@ -132,11 +132,11 @@ export default function App() {
         >
           <Tilt3DWrapper>
             <ProfileFrame3D />
-            <div className="relative z-10">
+            <div className="relative z-10 w-48 h-48 md:w-60 md:h-60">
               <img 
                 src={profileImg} 
                 alt={t.name}
-                className="w-48 h-48 md:w-60 md:h-60 rounded-[2.5rem] object-cover border border-white/10 shadow-2xl relative"
+                className="w-full h-full rounded-[2.5rem] object-cover border border-white/10 shadow-2xl"
                 style={{ filter: 'drop-shadow(0 0 24px rgba(96,165,250,0.3))' }}
               />
               {/* Holographic glare overlay */}
@@ -203,8 +203,11 @@ export default function App() {
               <div className="flex flex-wrap gap-2">
                 <SkillBadge name="C#" icon={TbBrandCSharp} colorClass="text-purple-500" />
                 <SkillBadge name=".NET Core" icon={SiDotnet} colorClass="text-purple-600" />
+                <SkillBadge name=".NET 8" icon={SiDotnet} colorClass="text-purple-400" />
+                <SkillBadge name="ASP.NET Web API" icon={Server} colorClass="text-indigo-400" />
                 <SkillBadge name="LINQ" icon={Code2} colorClass="text-slate-400" />
                 <SkillBadge name="Entity Framework" icon={Database} colorClass="text-slate-400" />
+                <SkillBadge name="ADO.NET" icon={Database} colorClass="text-slate-500" />
               </div>
             </GlassCard>
 
@@ -217,7 +220,9 @@ export default function App() {
               <div className="flex flex-wrap gap-2">
                 <SkillBadge name="SQL Server" icon={DiMsqlServer} colorClass="text-red-500" />
                 <SkillBadge name="PostgreSQL" icon={SiPostgresql} colorClass="text-blue-400" />
+                <SkillBadge name="MySQL" icon={Database} colorClass="text-orange-400" />
                 <SkillBadge name="MongoDB" icon={SiMongodb} colorClass="text-green-500" />
+                <SkillBadge name="ElasticSearch" icon={SiElasticsearch} colorClass="text-yellow-500" />
               </div>
             </GlassCard>
 
