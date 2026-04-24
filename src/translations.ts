@@ -77,10 +77,10 @@ export const translations = {
         github: "https://github.com/tramdk/BlogApi"
       },
       {
-        name: "WoL (Wake on LAN)",
-        desc: "Công cụ tiện ích cho phép bật máy tính từ xa qua mạng, tích hợp giao diện web đơn giản và khả năng mở rộng với AI hỗ trợ điều khiển.",
-        tech: ["TypeScript", "Node.js", "Vite", "Gemini API"],
-        github: "https://github.com/tramdk/WoL"
+        name: "Nông Y AI",
+        desc: "Ứng dụng di động chẩn đoán sâu bệnh cây trồng bằng AI Gemini, kết hợp nhận diện hình ảnh, giọng nói (Speech-to-Text) và tổng hợp tiếng nói (Text-to-Speech).",
+        tech: ["React", "TypeScript", "Vite", "Gemini AI", "Capacitor"],
+        github: "https://github.com/tramdk/agri-ai"
       }
     ]
   },
@@ -162,10 +162,10 @@ export const translations = {
         github: "https://github.com/tramdk/BlogApi"
       },
       {
-        name: "WoL (Wake on LAN)",
-        desc: "Utility tool for remote power management over networking, featuring a simple web UI and potential for AI-driven control extensions.",
-        tech: ["TypeScript", "Node.js", "Vite", "Gemini API"],
-        github: "https://github.com/tramdk/WoL"
+        name: "Nông Y AI",
+        desc: "Mobile app for crop disease diagnosis using Gemini AI, featuring image recognition, voice chat (Speech-to-Text), and Text-to-Speech capabilities.",
+        tech: ["React", "TypeScript", "Vite", "Gemini AI", "Capacitor"],
+        github: "https://github.com/tramdk/agri-ai"
       }
     ]
   }
