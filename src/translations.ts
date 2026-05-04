@@ -65,22 +65,34 @@ export const translations = {
         github: "https://github.com/tramdk/ai-fanpage-manager"
       },
       {
+        name: "FloraCore",
+        desc: "Boilerplate REST API .NET 9 chuẩn doanh nghiệp. Thiết kế cho sự mở rộng với Clean Architecture, CQRS (MediatR), Hybrid Cache, Outbox Pattern và OpenTelemetry.",
+        tech: [".NET 9", "EF Core", "MediatR", "PostgreSQL", "Redis"],
+        github: "https://github.com/tramdk/flora-core"
+      },
+      {
         name: "Tiệm hoa của ChinChin",
         desc: "Website thương mại điện tử cao cấp dành cho tiệm hoa với trải nghiệm 3D sống động (Three.js), giao diện Glassmorphism sang trọng và hiện đại.",
         tech: ["React", "Three.js", "Framer Motion", "Tailwind CSS"],
-        github: "https://github.com/tramdk/c-i-ti-m-hoa-c-a-chin"
-      },
-      {
-        name: "Blog API",
-        desc: "Hệ thống Backend REST API chuẩn công nghiệp áp dụng Clean Architecture, DDD và CQRS. Tích hợp Cloudinary, SignalR và tối ưu hóa hiệu suất với Dapper.",
-        tech: [".NET 8", "EF Core", "Dapper", "SQL Server", "Redis Cache"],
-        github: "https://github.com/tramdk/BlogApi"
+        github: "https://github.com/tramdk/chinchin-floral"
       },
       {
         name: "Nông Y AI",
         desc: "Ứng dụng di động chẩn đoán sâu bệnh cây trồng bằng AI Gemini, kết hợp nhận diện hình ảnh, giọng nói (Speech-to-Text) và tổng hợp tiếng nói (Text-to-Speech).",
         tech: ["React", "TypeScript", "Vite", "Gemini AI", "Capacitor"],
         github: "https://github.com/tramdk/agri-ai"
+      },
+      {
+        name: "AutoReels",
+        desc: "Studio sản xuất video ngắn tự động bằng AI. Tự động hóa toàn bộ quy trình: từ thu thập tin tức, soạn kịch bản (LLM), lồng tiếng đến dựng video dọc.",
+        tech: ["Node.js", "TypeScript", "React", "Prisma", "Gemini AI"],
+        github: "https://github.com/tramdk/autoreels"
+      },
+      {
+        name: "WoL Dashboard",
+        desc: "Dashboard Wake-on-LAN hiện đại để quản lý và khởi động máy tính từ xa. Giao diện mượt mà, lưu trữ thiết bị cục bộ và backend gửi Magic Packets.",
+        tech: ["TypeScript", "Vite", "Node.js", "Tailwind CSS"],
+        github: "https://github.com/tramdk/WoL"
       }
     ]
   },
@@ -150,22 +162,34 @@ export const translations = {
         github: "https://github.com/tramdk/ai-fanpage-manager"
       },
       {
+        name: "FloraCore",
+        desc: "Enterprise-Grade .NET 9 REST API Boilerplate. Designed for scalability with Clean Architecture, CQRS (MediatR), Hybrid Cache, Outbox Pattern, and OpenTelemetry.",
+        tech: [".NET 9", "EF Core", "MediatR", "PostgreSQL", "Redis"],
+        github: "https://github.com/tramdk/flora-core"
+      },
+      {
         name: "ChinChin Floral Shop",
         desc: "High-end E-commerce website for a floral shop with immersive 3D experiences (Three.js) and a luxury Glassmorphism UI.",
         tech: ["React", "Three.js", "Framer Motion", "Tailwind CSS"],
-        github: "https://github.com/tramdk/c-i-ti-m-hoa-c-a-chin"
-      },
-      {
-        name: "Blog API",
-        desc: "Industry-standard Backend REST API implementing Clean Architecture, DDD, and CQRS. Integrated with Cloudinary, SignalR, and Dapper optimization.",
-        tech: [".NET 8", "EF Core", "Dapper", "SQL Server", "Redis Cache"],
-        github: "https://github.com/tramdk/BlogApi"
+        github: "https://github.com/tramdk/chinchin-floral"
       },
       {
         name: "Nông Y AI",
         desc: "Mobile app for crop disease diagnosis using Gemini AI, featuring image recognition, voice chat (Speech-to-Text), and Text-to-Speech capabilities.",
         tech: ["React", "TypeScript", "Vite", "Gemini AI", "Capacitor"],
         github: "https://github.com/tramdk/agri-ai"
+      },
+      {
+        name: "AutoReels",
+        desc: "AI-Powered Automated Short-Form Video Studio. Automates the entire pipeline: news scraping, script generation (LLMs), voice synthesis, and portrait video rendering.",
+        tech: ["Node.js", "TypeScript", "React", "Prisma", "Gemini AI"],
+        github: "https://github.com/tramdk/autoreels"
+      },
+      {
+        name: "WoL Dashboard",
+        desc: "Modern Wake-on-LAN Dashboard for managing and remotely waking up computers. Features a smooth UI, local device storage, and a backend for sending Magic Packets.",
+        tech: ["TypeScript", "Vite", "Node.js", "Tailwind CSS"],
+        github: "https://github.com/tramdk/WoL"
       }
     ]
   }
